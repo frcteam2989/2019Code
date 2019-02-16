@@ -7,6 +7,7 @@ public class SubsystemManager {
 
     private DriveTrain driveTrain;
     private Intake intake;
+    private OuterElevator outerElevator;
 
     public SubsystemManager() {
         enableSubsystems();
@@ -14,7 +15,8 @@ public class SubsystemManager {
 
     private void enableSubsystems() {
         driveTrain = new DriveTrain();
-        intake = new Intake();
+        //intake = new Intake();
+        //outerElevator = new OuterElevator();
     }
 
     public DriveTrain getDriveTrain() {
@@ -23,6 +25,10 @@ public class SubsystemManager {
 
     public Intake getIntake() {
         return intake;
+    }
+
+    public OuterElevator getOuterElevator() {
+        return outerElevator;
     }
 
 }

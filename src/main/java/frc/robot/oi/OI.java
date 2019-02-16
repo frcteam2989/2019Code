@@ -23,7 +23,7 @@ public class OI {
 
     public OI() {
         loadPrimaryJoystick();
-        loadSecondaryJoystick();
+       //1 loadSecondaryJoystick();
     }
 
     private void loadPrimaryJoystick() {

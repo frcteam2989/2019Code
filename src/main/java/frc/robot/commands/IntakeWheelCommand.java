@@ -15,6 +15,7 @@ public class IntakeWheelCommand extends StarCommand {
         intake = Robot.subsystemManager.getIntake();
         this.direction = direction;
         requires(intake);
+
     }
 
     @Override

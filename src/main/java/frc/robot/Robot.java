@@ -42,9 +42,10 @@ public class Robot extends TimedRobot {
 
   /**
    * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
+   * this for items likPreview of uBlock Origin diagnostics that you want ran during disabled,
    * autonomous, teleoperated and test.
-   *
+   *Preview of uBlock Origin        SmartDashboard.putBoolean("Intake Pistons", status);
+
    * <p>This runs after the mode specific periodic functions, but before
    * LiveWindow and SmartDashboard integrated updating.
    */

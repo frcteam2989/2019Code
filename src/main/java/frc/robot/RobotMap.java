@@ -19,11 +19,8 @@ public class RobotMap {
      * DriveTrain
      * (Motor Ports)
      */
-    public static int DRIVETRAIN_MOTOR_LEFT_1 = 0;
-    public static int DRIVETRAIN_MOTOR_LEFT_2 = 1;
-
-    public static int DRIVETRAIN_MOTOR_RIGHT_1 = 2;
-    public static int DRIVETRAIN_MOTOR_RIGHT_2 = 3;
+    public static int DRIVETRAIN_MOTOR_LEFT = 0;
+    public static int DRIVETRAIN_MOTOR_RIGHT = 1;
 
     /**
      * DriveTrain
@@ -35,7 +32,7 @@ public class RobotMap {
      * Operator Interface
      * (Primary Joystick Ports)
      */
-    public static int OI_JOYSTICK_PRIMARY_PORT = 1;
+    public static int OI_JOYSTICK_PRIMARY_PORT = 0;
     public static int OI_JOYSTICK_PRIMARY_LEFT_TRIGGER_PORT = 2;
     public static int OI_JOYSTICK_PRIMARY_RIGHT_TRIGGER_PORT = 3;
     public static int OI_JOYSTICK_PRIMARY_LEFT_Y_AXIS_PORT = 1;
@@ -45,7 +42,7 @@ public class RobotMap {
      * Operator Interface
      * (Secondary Joystick Ports)
      */
-    public static int OI_JOYSTICK_SECONDARY_PORT= 0;
+    public static int OI_JOYSTICK_SECONDARY_PORT= 1;
     public static int OI_JOYSTICK_SECONDARY_INTAKE_PORT = 2;
     public static int OI_JOYSTICK_SECONDARY_SHOOT_PORT = 5;
     public static int OI_JOYSTICK_SECONDARY_TRIGGER_PORT = 1;
@@ -66,13 +63,16 @@ public class RobotMap {
     public static int INTAKE_MOTOR_RIGHT_PORT = 1;
     public static double INTAKE_MOTOR_SPEED = 0.45;
 
-    public static int ELEVATOR_POTENTIOMETER_PORT = 0;
+    public static int ELEVATOR_ENCODER_PORT_1 = 0;
+    public static int ELEVATOR_ENCODER_PORT_2 = 1;
     public static double ELEVATOR_PID_P = 2.0;
     public static double ELEVATOOR_PID_I = 0.0;
     public static double ELEVATOR_PID_D = 0.0;
     public static double ELEVATOR_PID_TOLERANCE = 0.05;
     public static boolean ELEVATOR_PID_CONTINOUS = false;
     public static int ELEVATOR_MOTOR_PORT = 4;
+
+    public static double ELEVATOR_END_TO_END_ENCODER_COUNT = 0.0;
 
 
 }

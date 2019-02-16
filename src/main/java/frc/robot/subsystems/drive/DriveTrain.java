@@ -1,6 +1,7 @@
 package frc.robot.subsystems.drive;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
@@ -10,8 +11,8 @@ import frc.robot.model.StarSubsystem;
 
 public class DriveTrain extends StarSubsystem {
 
-    private SpeedControllerGroup leftMotor;
-    private SpeedControllerGroup rightMotor;
+    private PWMTalonSRX leftMotor;
+    private PWMTalonSRX rightMotor;
     private GTADrive drive;
 
     public DriveTrain() {
@@ -20,8 +21,8 @@ public class DriveTrain extends StarSubsystem {
     }
 
     private void loadSpeedControllers() {
-        leftMotor = new SpeedControllerGroup(new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_LEFT_1), new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_LEFT_2));
-        rightMotor = new SpeedControllerGroup(new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_RIGHT_1), new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_RIGHT_2));
+        leftMotor = new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_LEFT);
+        rightMotor = new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_RIGHT);
     }
 
     private void loadDrive() {
@@ -38,11 +39,11 @@ public class DriveTrain extends StarSubsystem {
         return drive;
     }
 
-    public SpeedControllerGroup getLeftMotor() {
+    public SpeedController getLeftMotor() {
         return leftMotor;
     }
 
-    public SpeedControllerGroup getRightMotor() {
+    public SpeedController getRightMotor() {
         return rightMotor;
     }
 }
