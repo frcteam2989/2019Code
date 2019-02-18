@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
     subsystemManager = new SubsystemManager();
+    oi.assignCommands();
     autonomousCommand = Optional.empty();
   }
 

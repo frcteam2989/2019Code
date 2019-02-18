@@ -8,25 +8,32 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.TeleopDriveCommand;
 import frc.robot.model.StarSubsystem;
+import frc.robot.model.StarTalonSRX;
 
 public class DriveTrain extends StarSubsystem {
 
-    private PWMTalonSRX leftMotor;
-    private PWMTalonSRX rightMotor;
+    private StarTalonSRX leftMotor;
+    private StarTalonSRX rightMotor;
     private GTADrive drive;
 
     public DriveTrain() {
         loadSpeedControllers();
+        applySpeedControllerPreferences();
         loadDrive();
     }
 
     private void loadSpeedControllers() {
-        leftMotor = new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_LEFT);
-        rightMotor = new PWMTalonSRX(RobotMap.DRIVETRAIN_MOTOR_RIGHT);
+        leftMotor = new StarTalonSRX(RobotMap.DRIVETRAIN_MOTOR_LEFT);
+        rightMotor = new StarTalonSRX(RobotMap.DRIVETRAIN_MOTOR_RIGHT);
     }
 
     private void loadDrive() {
         drive = new GTADrive(new DifferentialDrive(leftMotor, rightMotor), Robot.oi.getPrimaryJoystick(), RobotMap.OI_JOYSTICK_PRIMARY_LEFT_TRIGGER_PORT, RobotMap.OI_JOYSTICK_PRIMARY_RIGHT_TRIGGER_PORT, RobotMap.OI_JOYSTICK_PRIMARY_LEFT_Y_AXIS_PORT, RobotMap.OI_JOYSTICK_PRIMARY_RIGHT_X_AXIS_PORT);
+    }
+
+    private void applySpeedControllerPreferences() {
+        leftMotor.setMaxOutputFunction(() -> RobotMap.LEFT_MAX_OUTPUT);
+        rightMotor.setMaxOutputFunction(() -> RobotMap.RIGHT_MAX_OUTPUT);
     }
 
 

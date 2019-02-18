@@ -16,11 +16,26 @@ package frc.robot;
 public class RobotMap {
 
     /**
+     * Subsystem Toggles
+     * (Enable and Disable on the fly)
+     */
+    public static boolean MODULES_PNEUMATICS_ENABLED = false;
+    public static boolean MODULES_INTAKE_ENABLED = true;
+    public static boolean MODULES_ELEVATOR_ENABLED = false;
+
+    /**
+     * DriveTrain
+     * (Tolerance Values)
+     */
+    public static double LEFT_MAX_OUTPUT = 1.0;
+    public static double RIGHT_MAX_OUTPUT = 1.0;
+
+    /**
      * DriveTrain
      * (Motor Ports)
      */
     public static int DRIVETRAIN_MOTOR_LEFT = 0;
-    public static int DRIVETRAIN_MOTOR_RIGHT = 1;
+    public static int DRIVETRAIN_MOTOR_RIGHT = 5;
 
     /**
      * DriveTrain
@@ -59,8 +74,7 @@ public class RobotMap {
      * Intake
      * (Motor Ports)
      */
-    public static int INTAKE_MOTOR_LEFT_PORT = 0;
-    public static int INTAKE_MOTOR_RIGHT_PORT = 1;
+    public static int INTAKE_MOTOR_RIGHT_PORT = 3;
     public static double INTAKE_MOTOR_SPEED = 0.45;
 
     public static int ELEVATOR_ENCODER_PORT_1 = 0;

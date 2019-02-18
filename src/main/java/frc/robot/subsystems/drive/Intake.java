@@ -2,6 +2,7 @@ package frc.robot.subsystems.drive;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import frc.robot.RobotMap;
 import frc.robot.model.SolenoidGroup;
@@ -12,11 +13,15 @@ import java.util.stream.Stream;
 public class Intake extends StarSubsystem {
 
     private SolenoidGroup hatchPistons;
-    private SpeedControllerGroup intakeMotors;
+    private SpeedController intakeMotors;
 
     public Intake() {
-        loadPistons();
-        loadMotors();
+        if(RobotMap.MODULES_PNEUMATICS_ENABLED && RobotMap.MODULES_INTAKE_ENABLED) {
+            loadPistons();
+        }
+        if(RobotMap.MODULES_INTAKE_ENABLED) {
+            loadMotors();
+        }
     }
 
     private void loadPistons() {
@@ -26,15 +31,19 @@ public class Intake extends StarSubsystem {
     }
 
     private void loadMotors() {
-        intakeMotors = new SpeedControllerGroup(new PWMTalonSRX(RobotMap.INTAKE_MOTOR_LEFT_PORT), new PWMTalonSRX((RobotMap.INTAKE_MOTOR_RIGHT_PORT)));
+        intakeMotors = new PWMTalonSRX((RobotMap.INTAKE_MOTOR_RIGHT_PORT));
     }
 
     public void setHatchPistons(boolean state) {
-        hatchPistons.execute(solenoid -> solenoid.set(state));
+        if(hatchPistons != null && RobotMap.MODULES_PNEUMATICS_ENABLED) {
+            hatchPistons.execute(solenoid -> solenoid.set(state));
+        }
     }
 
     public void setIntakeMotors(double value) {
-        intakeMotors.set(value);
+        if(intakeMotors != null && RobotMap.MODULES_INTAKE_ENABLED) {
+            intakeMotors.set(value);
+        }
     }
 
     @Override

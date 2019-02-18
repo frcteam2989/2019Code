@@ -8,6 +8,7 @@
 package frc.robot.oi;
 
 import frc.robot.RobotMap;
+import frc.robot.commands.IntakeWheelCommand;
 import frc.robot.model.StarJoystick;
 
 import java.util.stream.Stream;
@@ -23,7 +24,7 @@ public class OI {
 
     public OI() {
         loadPrimaryJoystick();
-       //1 loadSecondaryJoystick();
+        loadSecondaryJoystick();
     }
 
     private void loadPrimaryJoystick() {
@@ -38,6 +39,12 @@ public class OI {
                 RobotMap.OI_JOYSTICK_SECONDARY_TRIGGER_PORT,
                 RobotMap.OI_JOYSTICK_SECONDARY_ELEVATOR_AXIS
         ).forEach(secondaryJoystick::addButton);
+
+    }
+
+    public void assignCommands() {
+        secondaryJoystick.getButton(RobotMap.OI_JOYSTICK_SECONDARY_INTAKE_PORT).ifPresent(button -> button.whileHeld(new IntakeWheelCommand(-1)));
+        secondaryJoystick.getButton(RobotMap.OI_JOYSTICK_SECONDARY_SHOOT_PORT).ifPresent(button -> button.whileHeld(new IntakeWheelCommand(1)));
     }
 
     public StarJoystick getPrimaryJoystick() {

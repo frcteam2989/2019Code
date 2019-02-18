@@ -5,21 +5,24 @@ import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
+import frc.robot.model.StarSubsystem;
 
-public class OuterElevator extends PIDSubsystem {
+public class OuterElevator extends StarSubsystem {
 
     private PWMSpeedController motor;
     private Encoder encoder;
 
     public OuterElevator() {
-        super("Elevator", RobotMap.ELEVATOR_PID_P, RobotMap.ELEVATOOR_PID_I, RobotMap.ELEVATOR_PID_D);
-        encoder = new Encoder(RobotMap.ELEVATOR_ENCODER_PORT_1, RobotMap.ELEVATOR_ENCODER_PORT_2, false);
-        motor = new PWMVictorSPX(RobotMap.ELEVATOR_ENCODER_PORT_1);
-        setAbsoluteTolerance(RobotMap.ELEVATOR_PID_TOLERANCE);
-        getPIDController().setContinuous(RobotMap.ELEVATOR_PID_CONTINOUS);
+        if(RobotMap.MODULES_ELEVATOR_ENABLED) {
+            //super("Elevator", RobotMap.ELEVATOR_PID_P, RobotMap.ELEVATOOR_PID_I, RobotMap.ELEVATOR_PID_D);
+            encoder = new Encoder(RobotMap.ELEVATOR_ENCODER_PORT_1, RobotMap.ELEVATOR_ENCODER_PORT_2, false);
+            motor = new PWMVictorSPX(RobotMap.ELEVATOR_ENCODER_PORT_1);
+            //setAbsoluteTolerance(RobotMap.ELEVATOR_PID_TOLERANCE);
+            //getPIDController().setContinuous(RobotMap.ELEVATOR_PID_CONTINOUS);
+        }
     }
 
-    @Override
+    /*@Override
     protected double returnPIDInput() {
         return encoder.get();
     }
@@ -27,6 +30,12 @@ public class OuterElevator extends PIDSubsystem {
     @Override
     protected void usePIDOutput(double output) {
         motor.pidWrite(output);
+    }*/
+
+    protected void setMotorSpeed(double speed) {
+        if(motor != null && RobotMap.MODULES_ELEVATOR_ENABLED) {
+            motor.set(speed);
+        }
     }
 
     @Override
