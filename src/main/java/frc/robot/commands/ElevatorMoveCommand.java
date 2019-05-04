@@ -1,7 +1,9 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.model.StarCommand;
 import frc.robot.subsystems.OuterElevator;
 
@@ -13,9 +15,11 @@ public class ElevatorMoveCommand extends StarCommand {
 
     public ElevatorMoveCommand(double targetValue) {
         this.targetValue = targetValue;
-        elevator = Robot.subsystemManager.getOuterElevator();
-        status = false;
-        requires(elevator);
+        if(RobotMap.MODULES_ELEVATOR_ENABLED) {
+            elevator = Robot.subsystemManager.getOuterElevator();
+            status = false;
+            requires(elevator);
+        }
     }
 
     private void update(boolean status) {
@@ -32,7 +36,10 @@ public class ElevatorMoveCommand extends StarCommand {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-
+        if(RobotMap.MODULES_ELEVATOR_ENABLED) {
+            double joystickOutput = Robot.oi.getSecondaryJoystick().getRawAxis(0);
+            elevator.setMotorSpeed(joystickOutput);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,7 +50,10 @@ public class ElevatorMoveCommand extends StarCommand {
 
     @Override
     protected void terminate() {
-        update(false);
+        if(RobotMap.MODULES_ELEVATOR_ENABLED) {
+            elevator.setMotorSpeed(0);
+            update(false);
+        }
     }
 
 }

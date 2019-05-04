@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 public class Intake extends StarSubsystem {
 
-    private SolenoidGroup hatchPistons;
-    private SpeedController intakeMotors;
+    private Solenoid hatchPistons;
+    private SpeedControllerGroup intakeMotors;
 
     public Intake() {
         if(RobotMap.MODULES_PNEUMATICS_ENABLED && RobotMap.MODULES_INTAKE_ENABLED) {
@@ -25,18 +25,18 @@ public class Intake extends StarSubsystem {
     }
 
     private void loadPistons() {
-        SolenoidGroup.SolenoidGroupBuilder builder = new SolenoidGroup.SolenoidGroupBuilder();
-        Stream.of(RobotMap.INTAKE_SOLENOID_LEFT_PORT, RobotMap.INTAKE_SOLENOID_RIGHT_PORT).forEach(builder::add);
-        hatchPistons = builder.create();
+        hatchPistons = new Solenoid(RobotMap.INTAKE_SOLENOID_LEFT_PORT);
     }
 
     private void loadMotors() {
-        intakeMotors = new PWMTalonSRX((RobotMap.INTAKE_MOTOR_RIGHT_PORT));
+        SpeedController left = new PWMTalonSRX(RobotMap.INTAKE_MOTOR_LEFT_PORT);
+        SpeedController right =  new PWMTalonSRX((RobotMap.INTAKE_MOTOR_RIGHT_PORT)); // better than left
+        intakeMotors = new SpeedControllerGroup(left, right);
     }
 
     public void setHatchPistons(boolean state) {
         if(hatchPistons != null && RobotMap.MODULES_PNEUMATICS_ENABLED) {
-            hatchPistons.execute(solenoid -> solenoid.set(state));
+            hatchPistons.set(state);
         }
     }
 
@@ -49,7 +49,11 @@ public class Intake extends StarSubsystem {
     @Override
     protected void initDefaultCommand() {}
 
-    public SolenoidGroup getHatchPistons() {
+    public Solenoid getHatchPistons() {
         return hatchPistons;
+    }
+
+    public double getLoopPressure() {
+        return 0.0;
     }
 }

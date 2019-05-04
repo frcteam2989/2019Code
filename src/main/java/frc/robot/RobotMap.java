@@ -16,12 +16,18 @@ package frc.robot;
 public class RobotMap {
 
     /**
+     * Camera Toggles
+     */
+    public static int CAMERA_ELEVATOR_PORT = 0;
+    public static int CAMERA_FIXED_PORT = 1;
+
+    /**
      * Subsystem Toggles
      * (Enable and Disable on the fly)
      */
-    public static boolean MODULES_PNEUMATICS_ENABLED = false;
+    public static boolean MODULES_PNEUMATICS_ENABLED = true;
     public static boolean MODULES_INTAKE_ENABLED = true;
-    public static boolean MODULES_ELEVATOR_ENABLED = false;
+    public static boolean MODULES_ELEVATOR_ENABLED = true;
 
     /**
      * DriveTrain
@@ -34,8 +40,10 @@ public class RobotMap {
      * DriveTrain
      * (Motor Ports)
      */
-    public static int DRIVETRAIN_MOTOR_LEFT = 0;
-    public static int DRIVETRAIN_MOTOR_RIGHT = 5;
+    public static int DRIVETRAIN_MOTOR_LEFT_1 = 0;
+    public static int DRIVETRAIN_MOTOR_LEFT_2 = 1;
+    public static int DRIVETRAIN_MOTOR_RIGHT_1 = 4;
+    public static int DRIVETRAIN_MOTOR_RIGHT_2 = 5;
 
     /**
      * DriveTrain
@@ -48,8 +56,8 @@ public class RobotMap {
      * (Primary Joystick Ports)
      */
     public static int OI_JOYSTICK_PRIMARY_PORT = 0;
-    public static int OI_JOYSTICK_PRIMARY_LEFT_TRIGGER_PORT = 2;
-    public static int OI_JOYSTICK_PRIMARY_RIGHT_TRIGGER_PORT = 3;
+    public static int OI_JOYSTICK_PRIMARY_LEFT_TRIGGER_PORT = 3;
+    public static int OI_JOYSTICK_PRIMARY_RIGHT_TRIGGER_PORT = 2;
     public static int OI_JOYSTICK_PRIMARY_LEFT_Y_AXIS_PORT = 1;
     public static int OI_JOYSTICK_PRIMARY_RIGHT_X_AXIS_PORT = 4;
 
@@ -62,18 +70,19 @@ public class RobotMap {
     public static int OI_JOYSTICK_SECONDARY_SHOOT_PORT = 5;
     public static int OI_JOYSTICK_SECONDARY_TRIGGER_PORT = 1;
     public static int OI_JOYSTICK_SECONDARY_ELEVATOR_AXIS = 1;
+    public static int OI_JOYSTICK_SECONDARY_HATCH_PORT = 7;
 
     /**
      * Intake
      * (Solenoid Ports)
      */
     public static int INTAKE_SOLENOID_LEFT_PORT = 0;
-    public static int INTAKE_SOLENOID_RIGHT_PORT = 1;
 
     /**
      * Intake
      * (Motor Ports)
      */
+    public static int INTAKE_MOTOR_LEFT_PORT = 6;
     public static int INTAKE_MOTOR_RIGHT_PORT = 3;
     public static double INTAKE_MOTOR_SPEED = 0.45;
 
@@ -84,7 +93,7 @@ public class RobotMap {
     public static double ELEVATOR_PID_D = 0.0;
     public static double ELEVATOR_PID_TOLERANCE = 0.05;
     public static boolean ELEVATOR_PID_CONTINOUS = false;
-    public static int ELEVATOR_MOTOR_PORT = 4;
+    public static int ELEVATOR_MOTOR_PORT = 2;
 
     public static double ELEVATOR_END_TO_END_ENCODER_COUNT = 0.0;
 

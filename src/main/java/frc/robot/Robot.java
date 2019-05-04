@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.model.CameraManager;
 import frc.robot.oi.OI;
 import frc.robot.subsystems.SubsystemManager;
 
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static SubsystemManager subsystemManager;
   public static Optional<Command> autonomousCommand;
+  public static CameraManager cameraManager;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
     subsystemManager = new SubsystemManager();
     oi.assignCommands();
     autonomousCommand = Optional.empty();
+    cameraManager = new CameraManager(this);
   }
 
   /**

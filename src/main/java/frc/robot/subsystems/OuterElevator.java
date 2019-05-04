@@ -16,7 +16,7 @@ public class OuterElevator extends StarSubsystem {
         if(RobotMap.MODULES_ELEVATOR_ENABLED) {
             //super("Elevator", RobotMap.ELEVATOR_PID_P, RobotMap.ELEVATOOR_PID_I, RobotMap.ELEVATOR_PID_D);
             encoder = new Encoder(RobotMap.ELEVATOR_ENCODER_PORT_1, RobotMap.ELEVATOR_ENCODER_PORT_2, false);
-            motor = new PWMVictorSPX(RobotMap.ELEVATOR_ENCODER_PORT_1);
+            motor = new PWMVictorSPX(RobotMap.ELEVATOR_MOTOR_PORT);
             //setAbsoluteTolerance(RobotMap.ELEVATOR_PID_TOLERANCE);
             //getPIDController().setContinuous(RobotMap.ELEVATOR_PID_CONTINOUS);
         }
@@ -32,7 +32,7 @@ public class OuterElevator extends StarSubsystem {
         motor.pidWrite(output);
     }*/
 
-    protected void setMotorSpeed(double speed) {
+    public void setMotorSpeed(double speed) {
         if(motor != null && RobotMap.MODULES_ELEVATOR_ENABLED) {
             motor.set(speed);
         }
